@@ -1,0 +1,17 @@
+Welcome to the Alert Manager Development Virtual Machine:
+
+Run 'start_alert_manager' to get going and then visit:
+http://10.31.41.59:5000/alerts.html
+
+Use 'ctrl/command+c' to stop the application as needed.
+
+Edit code directly in this VM. Or, you can edit from
+outside the VM with your IDE of choice. Code changes
+should trigger an automatic reload of the application.
+
+Docs are available here [1] and here [2], and real live
+people can be found on IRC irc://irc.mozilla.org/#ateam
+
+[1] https://wiki.mozilla.org/Auto-tools/Projects/AlertManager
+[2] https://github.com/jmaher/alert_manager/blob/master/README.md
+

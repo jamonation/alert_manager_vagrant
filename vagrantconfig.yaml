@@ -1,0 +1,13 @@
+# Default config for Vagrant
+#
+# Don't change this; use vagrantconfig_local.yaml to override these settings
+# instead.
+
+nfs: false
+gui: false
+ip_address: 10.31.41.59
+memory_size: 1024
+number_cpus: 2
+box: "ubuntu/trusty64"
+package_name: "talos-ubuntu-trusty.box"
+mount_point: "/home/vagrant/src"
