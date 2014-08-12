@@ -34,3 +34,9 @@ alert_manager_load_database:
     - name: bzcat /home/vagrant/src/alert_manager/sample/july_alerts.sql.bz2 |mysql {{ salt['pillar.get']('mysql:name') }}
     - require:
       - mysql_database: {{ salt['pillar.get']('mysql:name') }}
+
+/home/vagrant/.profile:
+  file.append:
+    - text:
+      - alias load_alert_manager_sql="bzcat /home/vagrant/src/alert_manager/sample/july_alerts.sql.bz2 |mysql -u {{ salt['pillar.get']('mysql:user') }} {{ salt['pillar.get']('mysql:name') }}"
+      - alias start_alert_manager="uwsgi --ini /etc/uwsgi/apps-enabled/alert_manager.ini"
