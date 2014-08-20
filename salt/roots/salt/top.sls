@@ -1,8 +1,8 @@
 base:
   '*':
     - basics
-    - python
     - salt
     - mysql
+    - python
     - alert_manager
     - motd

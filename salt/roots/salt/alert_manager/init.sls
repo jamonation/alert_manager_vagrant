@@ -22,21 +22,8 @@
     - require:
       - file: /srv/www
 
-alert_manager_create_database:
-  mysql_database:
-    - present
-    - name: {{ salt['pillar.get']('mysql:name') }}
-    - require:
-      - pkg: mysql-server
-
-alert_manager_load_database:
-  cmd.run:
-    - name: bzcat /home/vagrant/src/alert_manager/sample/july_alerts.sql.bz2 |mysql {{ salt['pillar.get']('mysql:name') }}
-    - require:
-      - mysql_database: {{ salt['pillar.get']('mysql:name') }}
-
 /home/vagrant/.profile:
   file.append:
     - text:
-      - alias load_alert_manager_sql="bzcat /home/vagrant/src/alert_manager/sample/july_alerts.sql.bz2 |mysql -u {{ salt['pillar.get']('mysql:user') }} {{ salt['pillar.get']('mysql:name') }}"
+      - alias load_alert_manager_sql="echo \"CREATE DATABASE IF NOT EXISTS {{ salt['pillar.get']('mysql:name') }}\" |mysql -u root; bzcat /home/vagrant/src/alert_manager/sample/july_alerts.sql.bz2 |mysql -u {{ salt['pillar.get']('mysql:user') }} {{ salt['pillar.get']('mysql:name') }}"
       - alias start_alert_manager="uwsgi --ini /etc/uwsgi/apps-enabled/alert_manager.ini"
